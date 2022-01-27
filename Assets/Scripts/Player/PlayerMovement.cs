@@ -160,15 +160,15 @@ public class PlayerMovement : MonoBehaviour
     m_bInWall = false;
     m_bInWallRight = false;
     m_bInWallLeft = false;
-    float distance = 0.3f;
+    float distance = 0.4f;
     RaycastHit2D cast =
     Physics2D.BoxCast(m_boxCollider.bounds.center, m_boxCollider.bounds.size * 0.5f, 0, Vector2.right, distance, m_platformsLayer);
     if (cast.collider != null)
     {
+      m_body.AddForce(new Vector2(-m_currentSpeed, 0));
       m_rightSpeed = 0;
       m_rightTime = 0;
       m_currentSpeed = 0;
-      m_body.AddForce(new Vector2(-m_currentSpeed, 0));
       m_bInWall = true;
       m_bInWallRight = true;
     }
@@ -176,10 +176,10 @@ public class PlayerMovement : MonoBehaviour
     Physics2D.BoxCast(m_boxCollider.bounds.center, m_boxCollider.bounds.size * 0.5f, 0, Vector2.left, distance, m_platformsLayer);
     if (cast.collider != null)
     {
+      m_body.AddForce(new Vector2(-m_currentSpeed, 0));
       m_leftSpeed = 0;
       m_leftTime = 0;
       m_currentSpeed = 0;
-      m_body.AddForce(new Vector2(-m_currentSpeed, 0));
       m_bInWall = true;
       m_bInWallLeft = true;
     }
@@ -190,7 +190,7 @@ public class PlayerMovement : MonoBehaviour
   {
 
     m_direction.x = 0;
-
+    bool firstJump = false;
     if (Input.GetKeyDown(KeyCode.LeftShift))
     {
       m_currentMaxSpeed = m_walkSpeed;
@@ -209,6 +209,7 @@ public class PlayerMovement : MonoBehaviour
       m_elaptseToCheckGround = 0;
       m_bJumping = true;
       m_bGorunded = false;
+      firstJump = true;
       //GetComponent<JumpSound>().play();
     }
     else
@@ -251,6 +252,8 @@ public class PlayerMovement : MonoBehaviour
         m_jumpTime = 0;
         m_jumpSpeed = 0;
         m_currentJumpForce = 0;
+
+        m_currentSpeed = 0;
       }
 
       m_bDobleJumping = false;
@@ -268,7 +271,7 @@ public class PlayerMovement : MonoBehaviour
         m_bDobleJumping = false;
       }
     }
-    else if (m_bJumping && Input.GetKeyDown(KeyCode.W) && !m_bDobleJumping)
+    else if (m_bJumping && Input.GetKeyDown(KeyCode.W) && !m_bDobleJumping && !firstJump)
     {
       m_bDobleJumping = true;
       m_currentJumpForce = m_jumpingForce2;
