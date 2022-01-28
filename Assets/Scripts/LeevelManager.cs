@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LeevelManager : MonoBehaviour
 {
-  public PlatformColor[] m_allPlatforms;
+  public ObjectColored[] m_allPlatforms;
   public List<GameObject> m_whitePlatforms;
   public List<GameObject> m_BlackPlatforms;
   public GameObject m_player;
@@ -15,14 +15,18 @@ public class LeevelManager : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
-    m_allPlatforms = FindObjectsOfType<PlatformColor>();
+    m_allPlatforms = FindObjectsOfType<ObjectColored>();
     var pm = FindObjectOfType<PlayerMovement>();
     m_player = pm.gameObject;
     var size = m_allPlatforms.Length;
     for (int i = 0; i < size; i++)
     {
-      m_allPlatforms[i].onStart();
       var obj = m_allPlatforms[i].gameObject;
+      var platform = obj.GetComponent<PlatformColor>();
+      if (platform)
+      {
+        platform.onStart();
+      }
       if (m_allPlatforms[i].m_bWhite) {
         m_whitePlatforms.Add(obj);
       }
