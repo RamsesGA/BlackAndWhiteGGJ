@@ -191,11 +191,12 @@ public class PlayerMovement : MonoBehaviour
 
     m_direction.x = 0;
     bool firstJump = false;
-    if (Input.GetKeyDown(KeyCode.C))
+    if (Input.GetKeyDown(KeyCode.X) && m_bGorunded)
     {
       m_currentMaxSpeed = m_walkSpeed;
+      m_currentSpeed = m_walkSpeed;
     }
-    if (Input.GetKeyUp(KeyCode.C))
+    if (Input.GetKeyUp(KeyCode.X) || (m_bInWall && !m_bGorunded) || m_bDobleJumping)
     {
       m_currentMaxSpeed = m_MaxSpeed;
     }
