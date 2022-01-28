@@ -191,17 +191,17 @@ public class PlayerMovement : MonoBehaviour
 
     m_direction.x = 0;
     bool firstJump = false;
-    if (Input.GetKeyDown(KeyCode.LeftShift))
+    if (Input.GetKeyDown(KeyCode.C))
     {
       m_currentMaxSpeed = m_walkSpeed;
     }
-    if (Input.GetKeyUp(KeyCode.LeftShift))
+    if (Input.GetKeyUp(KeyCode.C))
     {
       m_currentMaxSpeed = m_MaxSpeed;
     }
 
 
-    if (m_bGorunded && Input.GetKeyDown(KeyCode.W))
+    if (m_bGorunded && Input.GetKeyDown(KeyCode.Z))
     {
       m_acceleration = m_JumpAcceleration;
       //m_body.velocity = Vector2.up * m_jumpingForce;
@@ -222,7 +222,7 @@ public class PlayerMovement : MonoBehaviour
       calculeJump();
     }
 
-    if (Input.GetKey(KeyCode.D))
+    if (Input.GetKey(KeyCode.RightArrow))
     {
      // m_shooter.m_direcrtion = Vector3.right;
       transform.localScale = new Vector3(m_scale.x, m_scale.y, m_scale.z);
@@ -233,7 +233,7 @@ public class PlayerMovement : MonoBehaviour
     {
       calculateDesAcelerateRigthSpeed();
     }
-    if (Input.GetKey(KeyCode.A))
+    if (Input.GetKey(KeyCode.LeftArrow))
     {
       //m_shooter.m_direcrtion = -Vector3.right;
       transform.localScale = new Vector3(-m_scale.x, m_scale.y, m_scale.z);
@@ -245,7 +245,7 @@ public class PlayerMovement : MonoBehaviour
       calculateDesAcelerateLeftSpeed();
     }
     checkWall();
-    if (m_bInWall && (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)) && !m_bGorunded)
+    if (m_bInWall && (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow)) && !m_bGorunded)
     {
       if (m_jumpingWallTime == 0)
       {
@@ -257,7 +257,7 @@ public class PlayerMovement : MonoBehaviour
       }
 
       m_bDobleJumping = false;
-      if (Input.GetKeyDown(KeyCode.W))
+      if (Input.GetKeyDown(KeyCode.Z))
       {
           m_jumpingWallTime = m_jumpingWallTimeTofinish;
         if (m_bInWallRight)
@@ -271,7 +271,7 @@ public class PlayerMovement : MonoBehaviour
         m_bDobleJumping = false;
       }
     }
-    else if (m_bJumping && Input.GetKeyDown(KeyCode.W) && !m_bDobleJumping && !firstJump)
+    else if (m_bJumping && Input.GetKeyDown(KeyCode.Z) && !m_bDobleJumping && !firstJump)
     {
       m_bDobleJumping = true;
       m_currentJumpForce = m_jumpingForce2;
