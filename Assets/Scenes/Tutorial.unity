@@ -205,7 +205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1331152872455926580, guid: accf5a1679bcf4f4484a1dae6a64f262, type: 3}
       propertyPath: m_jumpingWallForce
-      value: 35
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1331152872455926580, guid: accf5a1679bcf4f4484a1dae6a64f262, type: 3}
       propertyPath: m_JumpUpForceMultiply
