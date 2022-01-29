@@ -75,7 +75,6 @@ namespace DevionGames.UIWidgets
             CloseTooltip();
         }
 
-
         private IEnumerator DelayTooltip(float delay)
         {
             float time = 0.0f;
