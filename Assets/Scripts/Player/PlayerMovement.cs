@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-//[RequireComponent(typeof(Animator))]
-//[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(SpriteRenderer))]
 //[RequireComponent(typeof(PlayerShoot))]
 [RequireComponent(typeof(BoxCollider2D))]
 public class PlayerMovement : MonoBehaviour
@@ -85,6 +85,8 @@ public class PlayerMovement : MonoBehaviour
 
   public float m_waitToCheckGround = 0.2f;
   public float m_elaptseToCheckGround = 0.2f;
+
+  public bool m_inWhite = true;
   // Start is called before the first frame update
   // Start is called before the first frame update
   void Start() {
@@ -129,10 +131,15 @@ public class PlayerMovement : MonoBehaviour
 
     float speedx = Mathf.Abs(m_body.velocity.x);
     bool isTooMuchVelocity = speedx > m_MaxSpeed;
-    //m_animator.SetFloat("speed", speedx);
-    //m_animator.SetBool("jumping", !m_bGorunded);
-    //m_animator.SetFloat("jumpSpeed", m_jumpSpeed);
-    //m_animator.SetBool("Attacking", m_shooter.shooting);
+    m_animator.SetFloat("speed", speedx);
+    m_animator.SetBool("jumping", !m_bGorunded);
+    m_animator.SetFloat("jumpSpeed", m_jumpSpeed);
+    m_animator.SetBool("DoubleJump", m_bDobleJumping);
+    m_animator.SetBool("InWhite", m_inWhite);
+    if (!m_bGorunded)
+    {
+      m_animator.SetBool("inWall", m_bInWall);
+    }
   }
   bool
   checkIsGrounded()
@@ -233,7 +240,10 @@ public class PlayerMovement : MonoBehaviour
 
     if (Input.GetKey(KeyCode.D))
     {
-      transform.localScale = new Vector3(m_scale.x, m_scale.y, m_scale.z);
+      if (m_bInWall && m_bJumping)
+        transform.localScale = new Vector3(m_scale.x, m_scale.y, m_scale.z);
+      else
+        transform.localScale = new Vector3(-m_scale.x, m_scale.y, m_scale.z);
       m_direction += Vector2.right;
       calculateRigthSpeed();
     }
@@ -243,7 +253,10 @@ public class PlayerMovement : MonoBehaviour
     }
     if (Input.GetKey(KeyCode.A))
     {
-      transform.localScale = new Vector3(-m_scale.x, m_scale.y, m_scale.z);
+      if (m_bInWall && m_bJumping)
+        transform.localScale = new Vector3(-m_scale.x, m_scale.y, m_scale.z);
+      else
+        transform.localScale = new Vector3(m_scale.x, m_scale.y, m_scale.z);
       m_direction += Vector2.left;
       calculateLeftSpeed();
     }

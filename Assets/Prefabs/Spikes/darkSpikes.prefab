@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2362605534376613389}
   - component: {fileID: 2362605534376613386}
   - component: {fileID: 2362605534376613387}
+  - component: {fileID: 1793617673}
   m_Layer: 0
   m_Name: darkSpikes
   m_TagString: Trap
@@ -96,7 +97,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0031331182, y: 0}
+  m_Offset: {x: -0.004699588, y: 0.007832691}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -107,5 +108,18 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.83467734, y: 0.32}
+  m_Size: {x: 0.9631331, y: 0.33566537}
   m_EdgeRadius: 0
+--- !u!114 &1793617673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2362605534376613385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26efb05e446bfb24d8e7b069beeb54a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_bWhite: 0

@@ -8,16 +8,39 @@ public class LeevelManager : MonoBehaviour
   public List<GameObject> m_whitePlatforms;
   public List<GameObject> m_BlackPlatforms;
   public GameObject m_player;
+  PlayerMovement m_playerScript;
   int m_whiteSize;
   int m_blackSize;
   bool m_bInWhite = true;
 
-  // Start is called before the first frame update
-  void Start()
+  public GameObject m_PauseMenu;
+  bool m_paused = false;
+
+  private static LeevelManager m_Instance;
+
+  public static LeevelManager Instance
+  {
+      get
+      {
+          if (m_Instance == null) { m_Instance = new LeevelManager(); }
+  
+          return m_Instance;
+      }
+ 
+      private set
+      {
+          m_Instance = value;
+      }
+  }
+
+  private LeevelManager() { }
+
+    // Start is called before the first frame update
+    void Start()
   {
     m_allPlatforms = FindObjectsOfType<ObjectColored>();
-    var pm = FindObjectOfType<PlayerMovement>();
-    m_player = pm.gameObject;
+    m_playerScript = FindObjectOfType<PlayerMovement>();
+    m_player = m_playerScript.gameObject;
     var size = m_allPlatforms.Length;
     for (int i = 0; i < size; i++)
     {
@@ -51,9 +74,36 @@ public class LeevelManager : MonoBehaviour
     {
       changeColor();
     }
+
+    if (Input.GetKeyDown(KeyCode.Escape))
+    {
+        if (!m_paused)
+        {
+            Pause();
+        }
+
+        else
+        {
+            UnPause();
+        }
+    }
   }
 
-  public void changeColor() {
+  public void Pause()
+  {
+        m_paused = true;
+        m_PauseMenu.gameObject.SetActive(true);
+        Time.timeScale = 0.0f;
+  }
+
+  public void UnPause()
+  {
+      m_paused = false;
+      m_PauseMenu.gameObject.SetActive(false);
+      Time.timeScale = 1.0f;
+  }
+
+    public void changeColor() {
     if (m_bInWhite)
     {
       foreach (var white in m_whitePlatforms)
@@ -72,10 +122,11 @@ public class LeevelManager : MonoBehaviour
         var col = black.GetComponent<BoxCollider2D>();
         col.enabled = true;
       }
-      m_player.GetComponent<SpriteRenderer>().color = Color.black;
+      //m_player.GetComponent<SpriteRenderer>().color = Color.black;
 
      //FindObjectOfType<Camera>().backgroundColor = Color.white;
       m_bInWhite = false;
+      m_playerScript.m_inWhite = false;
     }
     else
     {
@@ -95,7 +146,7 @@ public class LeevelManager : MonoBehaviour
         var col = black.GetComponent<BoxCollider2D>();
         col.enabled = false;
       }
-      m_player.GetComponent<SpriteRenderer>().color = Color.white;
+      //m_player.GetComponent<SpriteRenderer>().color = Color.white;
       //FindObjectOfType<Camera>().backgroundColor = Color.black;
       //foreach (var white in m_whitePlatforms)
       //  white.SetActive(true);
@@ -103,6 +154,7 @@ public class LeevelManager : MonoBehaviour
       //  black.SetActive(false);
 
       m_bInWhite = true;
+      m_playerScript.m_inWhite = true;
     }
   }
 }

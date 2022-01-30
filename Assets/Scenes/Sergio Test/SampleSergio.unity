@@ -396,38 +396,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1331152872455926580, guid: accf5a1679bcf4f4484a1dae6a64f262, type: 3}
-      propertyPath: m_MaxSpeed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1331152872455926580, guid: accf5a1679bcf4f4484a1dae6a64f262, type: 3}
-      propertyPath: m_walkSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1331152872455926580, guid: accf5a1679bcf4f4484a1dae6a64f262, type: 3}
-      propertyPath: m_jumpingForce
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 1331152872455926580, guid: accf5a1679bcf4f4484a1dae6a64f262, type: 3}
-      propertyPath: m_jumpingForce2
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 1331152872455926580, guid: accf5a1679bcf4f4484a1dae6a64f262, type: 3}
-      propertyPath: m_jumpingWallForce
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 1331152872455926580, guid: accf5a1679bcf4f4484a1dae6a64f262, type: 3}
-      propertyPath: m_JumpUpForceMultiply
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 1331152872455926580, guid: accf5a1679bcf4f4484a1dae6a64f262, type: 3}
-      propertyPath: m_JumpFallForceMultiply
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1331152872455926580, guid: accf5a1679bcf4f4484a1dae6a64f262, type: 3}
-      propertyPath: m_jumpingWallTimeTofinish
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 1331152872455926587, guid: accf5a1679bcf4f4484a1dae6a64f262, type: 3}
       propertyPath: m_Name
       value: Player

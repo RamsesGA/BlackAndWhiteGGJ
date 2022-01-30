@@ -47,3 +47,4 @@ MonoBehaviour:
   m_whitePlatforms: []
   m_BlackPlatforms: []
   m_player: {fileID: 0}
+  m_PauseMenu: {fileID: 0}
