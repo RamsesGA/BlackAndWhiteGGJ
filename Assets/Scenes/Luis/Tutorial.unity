@@ -14894,6 +14894,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7307101809520558102, guid: 7688e5d41e4a81940a3475c28081ffe8, type: 3}
+      propertyPath: effects.Array.data[0].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307101809520558102, guid: 7688e5d41e4a81940a3475c28081ffe8, type: 3}
+      propertyPath: effects.Array.data[0].volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307101809520558102, guid: 7688e5d41e4a81940a3475c28081ffe8, type: 3}
+      propertyPath: effects.Array.data[1].volume
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307101809520558102, guid: 7688e5d41e4a81940a3475c28081ffe8, type: 3}
+      propertyPath: effects.Array.data[2].volume
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307101809520558102, guid: 7688e5d41e4a81940a3475c28081ffe8, type: 3}
+      propertyPath: effects.Array.data[3].volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307101809520558102, guid: 7688e5d41e4a81940a3475c28081ffe8, type: 3}
+      propertyPath: effects.Array.data[4].volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307101809520558102, guid: 7688e5d41e4a81940a3475c28081ffe8, type: 3}
+      propertyPath: effects.Array.data[5].volume
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7307101809520558103, guid: 7688e5d41e4a81940a3475c28081ffe8, type: 3}
       propertyPath: m_RootOrder
       value: 1
