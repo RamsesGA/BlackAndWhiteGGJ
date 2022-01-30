@@ -8,6 +8,7 @@ public class LeevelManager : MonoBehaviour
   public List<GameObject> m_whitePlatforms;
   public List<GameObject> m_BlackPlatforms;
   public GameObject m_player;
+  PlayerMovement m_playerScript;
   int m_whiteSize;
   int m_blackSize;
   bool m_bInWhite = true;
@@ -16,8 +17,8 @@ public class LeevelManager : MonoBehaviour
   void Start()
   {
     m_allPlatforms = FindObjectsOfType<ObjectColored>();
-    var pm = FindObjectOfType<PlayerMovement>();
-    m_player = pm.gameObject;
+    m_playerScript = FindObjectOfType<PlayerMovement>();
+    m_player = m_playerScript.gameObject;
     var size = m_allPlatforms.Length;
     for (int i = 0; i < size; i++)
     {
@@ -72,10 +73,11 @@ public class LeevelManager : MonoBehaviour
         var col = black.GetComponent<BoxCollider2D>();
         col.enabled = true;
       }
-      m_player.GetComponent<SpriteRenderer>().color = Color.black;
+      //m_player.GetComponent<SpriteRenderer>().color = Color.black;
 
      //FindObjectOfType<Camera>().backgroundColor = Color.white;
       m_bInWhite = false;
+      m_playerScript.m_inWhite = false;
     }
     else
     {
@@ -95,7 +97,7 @@ public class LeevelManager : MonoBehaviour
         var col = black.GetComponent<BoxCollider2D>();
         col.enabled = false;
       }
-      m_player.GetComponent<SpriteRenderer>().color = Color.white;
+      //m_player.GetComponent<SpriteRenderer>().color = Color.white;
       //FindObjectOfType<Camera>().backgroundColor = Color.black;
       //foreach (var white in m_whitePlatforms)
       //  white.SetActive(true);
@@ -103,6 +105,7 @@ public class LeevelManager : MonoBehaviour
       //  black.SetActive(false);
 
       m_bInWhite = true;
+      m_playerScript.m_inWhite = true;
     }
   }
 }
