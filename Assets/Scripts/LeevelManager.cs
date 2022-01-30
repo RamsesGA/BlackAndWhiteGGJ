@@ -8,6 +8,7 @@ public class LeevelManager : MonoBehaviour
   public List<GameObject> m_whitePlatforms;
   public List<GameObject> m_BlackPlatforms;
   public GameObject m_player;
+  public DragonChangeColor m_dragon;
   PlayerMovement m_playerScript;
   int m_whiteSize;
   int m_blackSize;
@@ -40,6 +41,7 @@ public class LeevelManager : MonoBehaviour
   {
     m_allPlatforms = FindObjectsOfType<ObjectColored>();
     m_playerScript = FindObjectOfType<PlayerMovement>();
+    m_dragon = FindObjectOfType<DragonChangeColor>();
     m_player = m_playerScript.gameObject;
     var size = m_allPlatforms.Length;
     for (int i = 0; i < size; i++)
@@ -63,7 +65,10 @@ public class LeevelManager : MonoBehaviour
       var sprite = m_BlackPlatforms[i].GetComponent<SpriteRenderer>();
       sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0.2f);
       var col = m_BlackPlatforms[i].GetComponent<BoxCollider2D>();
-      col.enabled = false;
+      if (col)
+      {
+        col.enabled = false;
+      }
     }
     //FindObjectOfType<Camera>().backgroundColor = Color.black;
   }
@@ -112,7 +117,10 @@ public class LeevelManager : MonoBehaviour
         var sprite = white.GetComponent<SpriteRenderer>();
         sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0.2f);
         var col = white.GetComponent<BoxCollider2D>();
-        col.enabled = false;
+        if (col)
+        {
+          col.enabled = false;
+        }
       }
       foreach (var black in m_BlackPlatforms)
       {
@@ -120,13 +128,21 @@ public class LeevelManager : MonoBehaviour
         var sprite = black.GetComponent<SpriteRenderer>();
         sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 1.0f);
         var col = black.GetComponent<BoxCollider2D>();
-        col.enabled = true;
+        if (col)
+        {
+          col.enabled = true;
+        }
+
       }
       //m_player.GetComponent<SpriteRenderer>().color = Color.black;
 
      //FindObjectOfType<Camera>().backgroundColor = Color.white;
       m_bInWhite = false;
       m_playerScript.m_inWhite = false;
+      if (m_dragon)
+      {
+        m_dragon.m_bWhite = false;
+      }
     }
     else
     {
@@ -136,7 +152,10 @@ public class LeevelManager : MonoBehaviour
         var sprite = white.GetComponent<SpriteRenderer>();
         sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 1.0f);
         var col = white.GetComponent<BoxCollider2D>();
-        col.enabled = true;
+        if (col)
+        {
+          col.enabled = true;
+        }
       }
       foreach (var black in m_BlackPlatforms)
       {
@@ -144,7 +163,10 @@ public class LeevelManager : MonoBehaviour
         var sprite = black.GetComponent<SpriteRenderer>();
         sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b,0.2f);
         var col = black.GetComponent<BoxCollider2D>();
-        col.enabled = false;
+        if (col)
+        {
+          col.enabled = false;
+        }
       }
       //m_player.GetComponent<SpriteRenderer>().color = Color.white;
       //FindObjectOfType<Camera>().backgroundColor = Color.black;
@@ -155,6 +177,10 @@ public class LeevelManager : MonoBehaviour
 
       m_bInWhite = true;
       m_playerScript.m_inWhite = true;
+      if (m_dragon)
+      {
+        m_dragon.m_bWhite = true;
+      }
     }
   }
 }
