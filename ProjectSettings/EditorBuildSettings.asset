@@ -11,10 +11,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Luis/Tutorial.unity
     guid: a39126e48f3d5c54180c930f22c359d0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Sergio Test/SampleSergio.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: 6fce7e2fc7384a3459e1c65fcb248e90
+  - enabled: 1
+    path: Assets/Scenes/Level_2.unity
+    guid: 358fd098801037547aa185f319508193
   m_configObjects: {}

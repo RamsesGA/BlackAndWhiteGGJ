@@ -24,7 +24,7 @@ public class Dragon : MonoBehaviour
     {
         // Creep forward
         transform.position += new Vector3(speed * Time.deltaTime, transform.position.y);
-    transform.position = new Vector3(transform.position.x, m_player.gameObject.transform.position.y, 0);
+        transform.position = new Vector3(transform.position.x, m_player.gameObject.transform.position.y, 0);
     // Snap to left camera edge
     if (cam.position.x + offset > transform.position.x)
         {

@@ -112,6 +112,10 @@ public class AudioManager : MonoBehaviour
         {
             currentLevelIndex = next.buildIndex;
             StopAll();
+            foreach (var eff in effects)
+            {
+                eff.source.Stop();
+            }
             PlaySceneAudio();
         }
     }
