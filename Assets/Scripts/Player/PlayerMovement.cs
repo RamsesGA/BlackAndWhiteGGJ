@@ -134,8 +134,12 @@ public class PlayerMovement : MonoBehaviour
     m_animator.SetFloat("speed", speedx);
     m_animator.SetBool("jumping", !m_bGorunded);
     m_animator.SetFloat("jumpSpeed", m_jumpSpeed);
+    m_animator.SetBool("DoubleJump", m_bDobleJumping);
     m_animator.SetBool("InWhite", m_inWhite);
-    m_animator.SetBool("inWall", m_bInWall);
+    if (!m_bGorunded)
+    {
+      m_animator.SetBool("inWall", m_bInWall);
+    }
   }
   bool
   checkIsGrounded()
