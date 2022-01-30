@@ -21,23 +21,23 @@ public class LeevelManager : MonoBehaviour
 
   public static LeevelManager Instance
   {
-      get
-      {
-          if (m_Instance == null) { m_Instance = new LeevelManager(); }
-  
-          return m_Instance;
-      }
- 
-      private set
-      {
-          m_Instance = value;
-      }
+    get
+    {
+      if (m_Instance == null) { m_Instance = new LeevelManager(); }
+
+      return m_Instance;
+    }
+
+    private set
+    {
+      m_Instance = value;
+    }
   }
 
   private LeevelManager() { }
 
-    // Start is called before the first frame update
-    void Start()
+  // Start is called before the first frame update
+  void Start()
   {
     m_allPlatforms = FindObjectsOfType<ObjectColored>();
     m_playerScript = FindObjectOfType<PlayerMovement>();
@@ -52,7 +52,8 @@ public class LeevelManager : MonoBehaviour
       {
         platform.onStart();
       }
-      if (m_allPlatforms[i].m_bWhite) {
+      if (m_allPlatforms[i].m_bWhite)
+      {
         m_whitePlatforms.Add(obj);
       }
       else
@@ -82,33 +83,35 @@ public class LeevelManager : MonoBehaviour
 
     if (Input.GetKeyDown(KeyCode.Escape))
     {
-        if (!m_paused)
-        {
-            Pause();
-        }
+      if (!m_paused)
+      {
+        Pause();
+      }
 
-        else
-        {
-            UnPause();
-        }
+      else
+      {
+        UnPause();
+      }
     }
   }
 
   public void Pause()
   {
-        m_paused = true;
-        m_PauseMenu.gameObject.SetActive(true);
-        Time.timeScale = 0.0f;
+    m_paused = true;
+    m_PauseMenu.gameObject.SetActive(true);
+    Time.timeScale = 0.0f;
   }
 
   public void UnPause()
   {
-      m_paused = false;
-      m_PauseMenu.gameObject.SetActive(false);
-      Time.timeScale = 1.0f;
+    m_paused = false;
+    m_PauseMenu.gameObject.SetActive(false);
+    Time.timeScale = 1.0f;
   }
 
-    public void changeColor() {
+  public void changeColor()
+  {
+    AudioManager.Instance.PlayEffect("Switch");
     if (m_bInWhite)
     {
       foreach (var white in m_whitePlatforms)
@@ -136,7 +139,7 @@ public class LeevelManager : MonoBehaviour
       }
       //m_player.GetComponent<SpriteRenderer>().color = Color.black;
 
-     //FindObjectOfType<Camera>().backgroundColor = Color.white;
+      //FindObjectOfType<Camera>().backgroundColor = Color.white;
       m_bInWhite = false;
       m_playerScript.m_inWhite = false;
       if (m_dragon)
@@ -161,7 +164,7 @@ public class LeevelManager : MonoBehaviour
       {
         //black.SetActive(true);
         var sprite = black.GetComponent<SpriteRenderer>();
-        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b,0.2f);
+        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0.2f);
         var col = black.GetComponent<BoxCollider2D>();
         if (col)
         {

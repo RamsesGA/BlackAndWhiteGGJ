@@ -20,7 +20,7 @@ public class AudioManager : MonoBehaviour
     {
         get
         {
-            if (m_Instance == null) { m_Instance = new AudioManager(); }
+            if (m_Instance == null) { m_Instance =FindObjectOfType<AudioManager>(); }
 
             return m_Instance;
         }
@@ -37,6 +37,7 @@ public class AudioManager : MonoBehaviour
     public Sound[] tutorialSounds;
     public Sound[] levelSounds;
     public Sound[] effects;
+  public Sound walkEffect;
     public int currentLevelIndex = -5;
 
     private void Awake()
@@ -92,6 +93,10 @@ public class AudioManager : MonoBehaviour
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
+            if (s.name == "Step")
+            {
+              walkEffect = s;
+            }
         }
     }
 
@@ -199,10 +204,25 @@ public class AudioManager : MonoBehaviour
             s.source.Stop();
         }
     }
-
     public void PlayEffect(string clipName)
     {
-        Sound s = Array.Find(effects, eff => eff.name == name);
+    //Sound s = Array.Find(effects, eff => eff.source.name == name);
+        foreach (var eff in effects)
+        {
+          if (eff.name == clipName)
+          {
+              eff.source.Stop();
+          }
+        }
+        Sound s = null;
+        foreach (var eff in effects)
+        {
+          if (eff.name == clipName)
+          {
+            s = eff;
+            break;
+          }
+        }
 
         if (s == null)
         {
@@ -213,4 +233,18 @@ public class AudioManager : MonoBehaviour
 
         s.source.Play();
     }
+    public void PlayWalkEffect()
+    {
+      if (!walkEffect.source.isPlaying)
+      {
+        walkEffect.source.Play();
+      }
+    }
+  public void StopWalkEffect()
+  {
+    if (walkEffect.source.isPlaying)
+    {
+      walkEffect.source.Stop();
+    }
+  }
 }

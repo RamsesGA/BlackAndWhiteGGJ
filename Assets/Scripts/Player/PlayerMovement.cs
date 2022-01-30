@@ -135,6 +135,10 @@ public class PlayerMovement : MonoBehaviour
     handleInput();
 
     float speedx = Mathf.Abs(m_body.velocity.x);
+    if (speedx != 0)
+      AudioManager.Instance.PlayWalkEffect();
+    else if (speedx == 0 || !m_bGorunded)
+      AudioManager.Instance.StopWalkEffect();
     bool isTooMuchVelocity = speedx > m_MaxSpeed;
     m_animator.SetFloat("speed", speedx);
     m_animator.SetBool("jumping", !m_bGorunded);
@@ -231,7 +235,7 @@ public class PlayerMovement : MonoBehaviour
       m_bGorunded = false;
       firstJump = true;
       AudioManager.Instance.PlayEffect("Jump");
-        }
+    }
     else
     {
       m_acceleration = m_NormalAcceleration;
@@ -297,6 +301,7 @@ public class PlayerMovement : MonoBehaviour
         m_currentJumpForce = m_jumpingForce2;
         calculeJump();
         m_bDobleJumping = false;
+        AudioManager.Instance.PlayEffect("WallJump");
       }
     }
     else if (m_bJumping && Input.GetKeyDown(KeyCode.W) && !m_bDobleJumping && !firstJump)
@@ -308,6 +313,8 @@ public class PlayerMovement : MonoBehaviour
       m_body.AddForce(new Vector2(0, -m_jumpSpeed));
       m_jumpSpeed = 0;
       m_jumpTime = 0;
+      AudioManager.Instance.PlayEffect("Jump");
+
     }
 
     calculateWallSpeed();
