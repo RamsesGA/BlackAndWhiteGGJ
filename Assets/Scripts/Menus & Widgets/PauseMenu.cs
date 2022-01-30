@@ -12,6 +12,7 @@ public class PauseMenu : MonoBehaviour
 
     public void QuitMain()
     {
+        FindObjectOfType<LeevelManager>().UnPause();
         SceneManager.LoadScene(0);
     }
 }
