@@ -15,7 +15,9 @@ public class Respawn : MonoBehaviour
     private void
     OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Trap")) {
-          RestartLevel();
+          gameObject.GetComponent<SpriteRenderer>().enabled = false;
+          gameObject.GetComponent<Rigidbody2D>().simulated = false;
+          Invoke("RestartLevel", 1.0f);
         }
     }
 
