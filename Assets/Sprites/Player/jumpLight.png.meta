@@ -14,6 +14,9 @@ TextureImporter:
   - first:
       213: 881509631856601917
     second: jumpLight_3
+  - first:
+      213: -2610877314955813164
+    second: jumpLight_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -206,6 +209,27 @@ TextureImporter:
       bones: []
       spriteID: d3be5e8f650cb3c00800000000000000
       internalID: 881509631856601917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jumpLight_4
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 0
+        width: 132
+        height: 178
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dedee14aec44cbd0800000000000000
+      internalID: -2610877314955813164
       vertices: []
       indices: 
       edges: []
