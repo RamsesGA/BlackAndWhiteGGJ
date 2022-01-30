@@ -36,6 +36,7 @@ public class AudioManager : MonoBehaviour
     public Sound[] menuSounds;
     public Sound[] tutorialSounds;
     public Sound[] levelSounds;
+    public int currentLevelIndex = -5;
 
     private void Awake()
     {
@@ -44,9 +45,9 @@ public class AudioManager : MonoBehaviour
         {
           foreach (var item in others)
           {
-            if (item != this)
+            if (item == this)
             {
-              Destroy(item.gameObject);
+              Destroy(this.gameObject);
             }
           }
         }
@@ -87,13 +88,18 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         PlaySceneAudio();
-
         SceneManager.activeSceneChanged += ChangedActiveScene;
     }
 
     private void ChangedActiveScene(Scene current, Scene next)
     {
-        //StopAll();
+        if (currentLevelIndex != next.buildIndex)
+        {
+          currentLevelIndex = next.buildIndex;
+      
+            StopAll();
+            PlaySceneAudio();
+        }
     }
 
     public void PlayRandomSound(string array)
