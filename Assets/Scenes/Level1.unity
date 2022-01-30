@@ -16516,6 +16516,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1713469540}
     m_Modifications:
+    - target: {fileID: 9061028371304672968, guid: bd98d401e8ba8774f84292e2498e3557, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8325236957605685533}
+    - target: {fileID: 9061028371304672968, guid: bd98d401e8ba8774f84292e2498e3557, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UnPause
+      objectReference: {fileID: 0}
+    - target: {fileID: 9061028371304672968, guid: bd98d401e8ba8774f84292e2498e3557, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LeevelManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 9061028371417298819, guid: bd98d401e8ba8774f84292e2498e3557, type: 3}
       propertyPath: m_Name
       value: PauseMenu
@@ -21007,3 +21019,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d933a6d7d9ad4b14ab5614f013150ccd, type: 3}
+--- !u!114 &8325236957605685533 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8325236956373960072, guid: d933a6d7d9ad4b14ab5614f013150ccd, type: 3}
+  m_PrefabInstance: {fileID: 8325236957605685532}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9495118ab589e54abdc1a7386c7fb51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
