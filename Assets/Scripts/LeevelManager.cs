@@ -15,7 +15,7 @@ public class LeevelManager : MonoBehaviour
   bool m_bInWhite = true;
 
   public GameObject m_PauseMenu;
-  bool m_paused = false;
+  public bool m_paused = false;
 
   private static LeevelManager m_Instance;
 

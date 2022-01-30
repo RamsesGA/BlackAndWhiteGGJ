@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
   public float m_elaptseToCheckGround = 0.2f;
 
   public bool m_inWhite = true;
-  // Start is called before the first frame update
+  LeevelManager m_Lmanager; 
   // Start is called before the first frame update
   void Start() {
     m_body = GetComponent<Rigidbody2D>();
@@ -104,9 +104,14 @@ public class PlayerMovement : MonoBehaviour
     m_direction = Vector3.right;
     m_NormalAcceleration = m_MaxSpeed / m_timeToMaxSpeed;
     //m_JumpAcceleration = m_NormalAcceleration * 0.5f;
+    m_Lmanager = FindObjectOfType<LeevelManager>();
   }
   public void Update()
   {
+    if (m_Lmanager && m_Lmanager.m_paused)
+    {
+      return;
+    }
     if (m_waitToCheckGround <= m_elaptseToCheckGround)
     {
       m_bGorunded = checkIsGrounded();
@@ -225,7 +230,8 @@ public class PlayerMovement : MonoBehaviour
       m_bJumping = true;
       m_bGorunded = false;
       firstJump = true;
-    }
+      AudioManager.Instance.PlayEffect("Jump");
+        }
     else
     {
       m_acceleration = m_NormalAcceleration;

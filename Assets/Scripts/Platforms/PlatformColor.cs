@@ -12,10 +12,10 @@ public class PlatformColor : ObjectColored
   public void onStart()
   {
 
-    if (!m_bWhite)
-    {
-      GetComponent<SpriteRenderer>().color = Color.black;
-    }
+    //if (!m_bWhite)
+    //{
+    //  GetComponent<SpriteRenderer>().color = Color.black;
+    //}
   }
 
   // Update is called once per frame

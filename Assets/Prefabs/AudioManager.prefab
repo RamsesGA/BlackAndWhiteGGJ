@@ -94,3 +94,41 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  effects:
+  - name: Step
+    clip: {fileID: 8300000, guid: 3e299b9129329f24692bb63f57f33d19, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Jump
+    clip: {fileID: 8300000, guid: 6477baeb5f4c2e54490986d849e9523f, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: WallJump
+    clip: {fileID: 8300000, guid: 826cc04c290b997449cc76fd20bdda3a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Switch
+    clip: {fileID: 8300000, guid: 7861f5a7caa1d4748a13e543ebe12a37, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Win
+    clip: {fileID: 8300000, guid: a82c4767955b4c64eb4828fe45ddeb22, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Dead
+    clip: {fileID: 8300000, guid: efa95cbd089290f4f926273eb47c4c1c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  currentLevelIndex: -5
