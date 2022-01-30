@@ -188,9 +188,19 @@ public class PlayerMovement : MonoBehaviour
   private void
   handleInput()
   {
-
     m_direction.x = 0;
     bool firstJump = false;
+    /*
+    if (Input.GetKeyDown(KeyCode.LeftShift))
+    {
+      m_currentMaxSpeed = m_walkSpeed;
+      m_currentSpeed = m_walkSpeed;
+    }
+    if (Input.GetKeyUp(KeyCode.LeftShift) || m_bDobleJumping || (m_bInWall && !m_bGorunded))
+    {
+      m_currentMaxSpeed = m_MaxSpeed;
+    }
+    */
     if (Input.GetKeyDown(KeyCode.LeftShift))
     {
       m_currentMaxSpeed = m_walkSpeed;
@@ -200,23 +210,22 @@ public class PlayerMovement : MonoBehaviour
       m_currentMaxSpeed = m_MaxSpeed;
     }
 
-
     if (m_bGorunded && Input.GetKeyDown(KeyCode.W))
     {
       m_acceleration = m_JumpAcceleration;
-      //m_body.velocity = Vector2.up * m_jumpingForce;
       m_currentJumpForce = m_jumpingForce;
       m_elaptseToCheckGround = 0;
       m_bJumping = true;
       m_bGorunded = false;
       firstJump = true;
-      //GetComponent<JumpSound>().play();
     }
     else
     {
       m_acceleration = m_NormalAcceleration;
     }
+
     checkCelling();
+
     if (m_bJumping)
     {
       calculeJump();
@@ -224,7 +233,6 @@ public class PlayerMovement : MonoBehaviour
 
     if (Input.GetKey(KeyCode.D))
     {
-     // m_shooter.m_direcrtion = Vector3.right;
       transform.localScale = new Vector3(m_scale.x, m_scale.y, m_scale.z);
       m_direction += Vector2.right;
       calculateRigthSpeed();
@@ -235,7 +243,6 @@ public class PlayerMovement : MonoBehaviour
     }
     if (Input.GetKey(KeyCode.A))
     {
-      //m_shooter.m_direcrtion = -Vector3.right;
       transform.localScale = new Vector3(-m_scale.x, m_scale.y, m_scale.z);
       m_direction += Vector2.left;
       calculateLeftSpeed();
@@ -244,7 +251,9 @@ public class PlayerMovement : MonoBehaviour
     {
       calculateDesAcelerateLeftSpeed();
     }
+
     checkWall();
+
     if (m_bInWall && (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)) && !m_bGorunded)
     {
       if (m_jumpingWallTime == 0)
@@ -257,6 +266,7 @@ public class PlayerMovement : MonoBehaviour
       }
 
       m_bDobleJumping = false;
+
       if (Input.GetKeyDown(KeyCode.W))
       {
           m_jumpingWallTime = m_jumpingWallTimeTofinish;
@@ -266,7 +276,6 @@ public class PlayerMovement : MonoBehaviour
           m_currentJumpingWallForce = m_jumpingWallForce;
 
         m_currentJumpForce = m_jumpingForce2;
-        //m_body.AddForce(new Vector2(0, -m_body.velocity.y));
         calculeJump();
         m_bDobleJumping = false;
       }
@@ -281,10 +290,11 @@ public class PlayerMovement : MonoBehaviour
       m_jumpSpeed = 0;
       m_jumpTime = 0;
     }
+
     calculateWallSpeed();
+
     m_currentSpeed = m_rightSpeed - m_leftSpeed + m_jumpingWallSpeed;
     m_body.velocity = new Vector2(m_currentSpeed, m_jumpSpeed);
-    //transform.position = new Vector2(transform.position.x+m_currentSpeed, transform.position.y + m_jumpSpeed);
   }
 
   void calculateRigthSpeed()
