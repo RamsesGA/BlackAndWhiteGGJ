@@ -240,7 +240,7 @@ public class PlayerMovement : MonoBehaviour
 
     if (Input.GetKey(KeyCode.D))
     {
-      if (m_bInWall)
+      if (m_bInWall && m_bJumping)
         transform.localScale = new Vector3(m_scale.x, m_scale.y, m_scale.z);
       else
         transform.localScale = new Vector3(-m_scale.x, m_scale.y, m_scale.z);
@@ -253,7 +253,7 @@ public class PlayerMovement : MonoBehaviour
     }
     if (Input.GetKey(KeyCode.A))
     {
-      if (m_bInWall)
+      if (m_bInWall && m_bJumping)
         transform.localScale = new Vector3(-m_scale.x, m_scale.y, m_scale.z);
       else
         transform.localScale = new Vector3(m_scale.x, m_scale.y, m_scale.z);
