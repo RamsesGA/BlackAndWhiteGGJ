@@ -95,8 +95,7 @@ public class AudioManager : MonoBehaviour
     {
         if (currentLevelIndex != next.buildIndex)
         {
-          currentLevelIndex = next.buildIndex;
-      
+            currentLevelIndex = next.buildIndex;
             StopAll();
             PlaySceneAudio();
         }
