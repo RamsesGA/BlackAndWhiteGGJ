@@ -16,6 +16,7 @@ public class LeevelManager : MonoBehaviour
 
   public GameObject m_PauseMenu;
   public bool m_paused = false;
+  public float opacidad = 0.4f;
 
   private static LeevelManager m_Instance;
 
@@ -64,7 +65,7 @@ public class LeevelManager : MonoBehaviour
     for (int i = 0; i < m_blackSize; i++)
     {
       var sprite = m_BlackPlatforms[i].GetComponent<SpriteRenderer>();
-      sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0.2f);
+      sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, opacidad);
       var col = m_BlackPlatforms[i].GetComponent<BoxCollider2D>();
       if (col)
       {
@@ -118,7 +119,7 @@ public class LeevelManager : MonoBehaviour
       {
         //white.SetActive(false);
         var sprite = white.GetComponent<SpriteRenderer>();
-        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0.2f);
+        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, opacidad);
         var col = white.GetComponent<BoxCollider2D>();
         if (col)
         {
@@ -164,7 +165,7 @@ public class LeevelManager : MonoBehaviour
       {
         //black.SetActive(true);
         var sprite = black.GetComponent<SpriteRenderer>();
-        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0.2f);
+        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, opacidad);
         var col = black.GetComponent<BoxCollider2D>();
         if (col)
         {
