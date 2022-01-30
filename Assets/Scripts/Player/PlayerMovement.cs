@@ -230,7 +230,8 @@ public class PlayerMovement : MonoBehaviour
       m_bJumping = true;
       m_bGorunded = false;
       firstJump = true;
-    }
+      AudioManager.Instance.PlayEffect("Jump");
+        }
     else
     {
       m_acceleration = m_NormalAcceleration;

@@ -36,6 +36,7 @@ public class AudioManager : MonoBehaviour
     public Sound[] menuSounds;
     public Sound[] tutorialSounds;
     public Sound[] levelSounds;
+    public Sound[] effects;
     public int currentLevelIndex = -5;
 
     private void Awake()
@@ -76,6 +77,15 @@ public class AudioManager : MonoBehaviour
         }
 
         foreach (Sound s in levelSounds)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+            s.source.volume = s.volume;
+            s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
+        }
+
+        foreach (Sound s in effects)
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
@@ -188,5 +198,19 @@ public class AudioManager : MonoBehaviour
         {
             s.source.Stop();
         }
+    }
+
+    public void PlayEffect(string clipName)
+    {
+        Sound s = Array.Find(effects, eff => eff.name == name);
+
+        if (s == null)
+        {
+            Debug.LogWarning("Sound " + clipName + "not found in from Audio Manager");
+
+            return;
+        }
+
+        s.source.Play();
     }
 }
