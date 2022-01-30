@@ -21,7 +21,18 @@ public class Respawn : MonoBehaviour
         }
     }
 
-    private void
+  private void OnTriggerEnter2D(Collider2D collision)
+  {
+    if (collision.gameObject.CompareTag("Trap"))
+    {
+      gameObject.GetComponent<SpriteRenderer>().enabled = false;
+      gameObject.GetComponent<Rigidbody2D>().simulated = false;
+      Invoke("RestartLevel", 1.0f);
+    }
+  }
+
+
+  private void
     Die() {
         //g_rb.bodyType = RigidbodyType2D.Static;
     }
