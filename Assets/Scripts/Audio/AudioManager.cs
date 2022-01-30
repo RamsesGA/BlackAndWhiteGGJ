@@ -39,6 +39,19 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
+        var others = FindObjectsOfType<AudioManager>();
+        if (others.Length >1 )
+        {
+          foreach (var item in others)
+          {
+            if (item != this)
+            {
+              Destroy(item.gameObject);
+            }
+          }
+        }
+        
+
         // Keep playing sound through scenes
         DontDestroyOnLoad(gameObject);
 
@@ -80,7 +93,7 @@ public class AudioManager : MonoBehaviour
 
     private void ChangedActiveScene(Scene current, Scene next)
     {
-        StopAll();
+        //StopAll();
     }
 
     public void PlayRandomSound(string array)
