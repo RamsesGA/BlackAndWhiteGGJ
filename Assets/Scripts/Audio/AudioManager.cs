@@ -11,7 +11,9 @@ public class AudioManager : MonoBehaviour
     {
         menu,
         tutorial,
-        level
+        level,
+        level2,
+        level3,
     }
 
     private static AudioManager m_Instance;
@@ -183,7 +185,14 @@ public class AudioManager : MonoBehaviour
                 PlayRandomSound("level");
 
                 break;
+            case (int)eCurrentScene.level2:
+                PlayRandomSound("level");
 
+                break;
+            case (int)eCurrentScene.level3:
+                PlayRandomSound("level");
+
+                break;
             default:
                 Debug.LogWarning("Current scene doesnt contain audios in Audio Manager");
 
