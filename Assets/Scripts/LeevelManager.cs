@@ -121,7 +121,7 @@ public class LeevelManager : MonoBehaviour
         var sprite = white.GetComponent<SpriteRenderer>();
         sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, opacidad);
         var col = white.GetComponent<BoxCollider2D>();
-        if (col)
+        if (col && !white.GetComponent<Dragon>())
         {
           col.enabled = false;
         }
@@ -167,7 +167,7 @@ public class LeevelManager : MonoBehaviour
         var sprite = black.GetComponent<SpriteRenderer>();
         sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, opacidad);
         var col = black.GetComponent<BoxCollider2D>();
-        if (col)
+        if (col&& !black.GetComponent<Dragon>())
         {
           col.enabled = false;
         }
