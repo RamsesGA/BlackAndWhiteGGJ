@@ -217,16 +217,18 @@ public class PlayerMovement : MonoBehaviour
       m_currentMaxSpeed = m_MaxSpeed;
     }
     */
-    if (Input.GetKeyDown(KeyCode.LeftShift))
+    if (InputManager.WalkButtonPressed())
     {
       m_currentMaxSpeed = m_walkSpeed;
     }
-    if (Input.GetKeyUp(KeyCode.LeftShift))
+    //if (Input.GetKeyUp(KeyCode.LeftShift))
+    if (InputManager.WalkButtonReleased())
     {
       m_currentMaxSpeed = m_MaxSpeed;
     }
 
-    if (m_bGorunded && Input.GetKeyDown(KeyCode.W))
+    //if (m_bGorunded && Input.GetKeyDown(KeyCode.Space))
+    if (m_bGorunded && InputManager.OnJump())
     {
       m_acceleration = m_JumpAcceleration;
       m_currentJumpForce = m_jumpingForce;
@@ -248,7 +250,8 @@ public class PlayerMovement : MonoBehaviour
       calculeJump();
     }
 
-    if (Input.GetKey(KeyCode.D))
+    //if (Input.GetKey(KeyCode.D))
+    if (InputManager.MoveRight())
     {
       if (m_bInWall && m_bJumping)
         transform.localScale = new Vector3(m_scale.x, m_scale.y, m_scale.z);
@@ -261,7 +264,8 @@ public class PlayerMovement : MonoBehaviour
     {
       calculateDesAcelerateRigthSpeed();
     }
-    if (Input.GetKey(KeyCode.A))
+    //if (Input.GetKey(KeyCode.A))
+    if (InputManager.MoveLeft())
     {
       if (m_bInWall && m_bJumping)
         transform.localScale = new Vector3(-m_scale.x, m_scale.y, m_scale.z);
@@ -277,7 +281,7 @@ public class PlayerMovement : MonoBehaviour
 
     checkWall();
 
-    if (m_bInWall && (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)) && !m_bGorunded)
+    if (m_bInWall && (InputManager.MoveRight() || InputManager.MoveLeft()) && !m_bGorunded)
     {
       if (m_jumpingWallTime == 0)
       {
@@ -290,7 +294,8 @@ public class PlayerMovement : MonoBehaviour
 
       m_bDobleJumping = false;
 
-      if (Input.GetKeyDown(KeyCode.W))
+      //if (Input.GetKeyDown(KeyCode.Space))
+      if (InputManager.OnJump())
       {
           m_jumpingWallTime = m_jumpingWallTimeTofinish;
         if (m_bInWallRight)
@@ -304,7 +309,8 @@ public class PlayerMovement : MonoBehaviour
         AudioManager.Instance.PlayEffect("WallJump");
       }
     }
-    else if (m_bJumping && Input.GetKeyDown(KeyCode.W) && !m_bDobleJumping && !firstJump)
+    //else if (m_bJumping && Input.GetKeyDown(KeyCode.Space) && !m_bDobleJumping && !firstJump)
+    else if (m_bJumping && InputManager.OnJump() && !m_bDobleJumping && !firstJump)
     {
       m_bDobleJumping = true;
       m_currentJumpForce = m_jumpingForce2;

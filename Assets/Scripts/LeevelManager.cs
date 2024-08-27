@@ -12,7 +12,7 @@ public class LeevelManager : MonoBehaviour
   PlayerMovement m_playerScript;
   int m_whiteSize;
   int m_blackSize;
-  bool m_bInWhite = true;
+  public bool m_bInWhite = true;
 
   public GameObject m_PauseMenu;
   public bool m_paused = false;
@@ -77,12 +77,14 @@ public class LeevelManager : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    if (Input.GetKeyDown(KeyCode.Space))
+    //if (Input.GetKeyDown(KeyCode.X))
+    if (InputManager.OnSwitch())
     {
       changeColor();
     }
 
-    if (Input.GetKeyDown(KeyCode.Escape))
+    //if (Input.GetKeyDown(KeyCode.Escape))
+    if (InputManager.OnPause())
     {
       if (!m_paused)
       {
