@@ -107,10 +107,16 @@ public class LeevelManager : MonoBehaviour
 
   public void UnPause()
   {
-    m_paused = false;
-    m_PauseMenu.gameObject.SetActive(false);
-    Time.timeScale = 1.0f;
+        StartCoroutine(UnPauseNextFrame());
   }
+
+    IEnumerator UnPauseNextFrame()
+    {
+        yield return null;
+		m_paused = false;
+		m_PauseMenu.gameObject.SetActive(false);
+		Time.timeScale = 1.0f;
+	}
 
   public void changeColor()
   {
